@@ -1,0 +1,13 @@
+.li-style {
+  display: flex;
+  flex-flow: row nowrap;
+  border-bottom: 1px black solid;
+}
+
+.li-value {
+  margin: 0 8px;
+}
+
+.important {
+  font-weight: bold;
+}
