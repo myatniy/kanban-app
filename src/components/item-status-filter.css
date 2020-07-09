@@ -1,0 +1,9 @@
+#btn-active {
+  border-left: none;
+  border-right: none;
+}
+
+.btn-group {
+  display: flex;
+  flex-flow: row nowrap; 
+}

@@ -1,3 +1,9 @@
+button {
+  border: 1px black solid;
+  color: black;
+  background-color: white;
+}
+
 .flex-container {
   display: flex;
   flex-flow: column nowrap;
