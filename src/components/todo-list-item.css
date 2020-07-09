@@ -6,8 +6,17 @@
 
 .li-value {
   margin: 0 8px;
+  cursor: pointer;
+}
+
+.crossed-out {
+  text-decoration: line-through;
 }
 
 .important {
-  font-weight: bold;
+  background-color: #7F8087;
+}
+
+.important .btn-important {
+  background-color: #B8BD61;
 }

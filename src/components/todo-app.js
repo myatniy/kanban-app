@@ -6,8 +6,8 @@ import {uuid} from "uuidv4";
 
 const TodoApp = () => {
   const todoData = [
-    {id: uuid(), value: "Build", isImportant: true},
-    {id: uuid(), value: "App", isImportant: false}
+    {id: uuid(), value: "Build"},
+    {id: uuid(), value: "App"}
   ]
 
   return (
