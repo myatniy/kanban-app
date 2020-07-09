@@ -9,16 +9,23 @@ export default class TodoListItem extends Component {
   };
 
   onListItemValueClick = () => {
-    this.setState({
-      isCrossedOut: !this.state.isCrossedOut
-    })
+    this.setState(state => {
+      return {
+        isCrossedOut: !state.isCrossedOut
+      };
+    });
   };
 
   onImportantButtonClick = () => {
-    this.setState({
-      isImportant: !this.state.isImportant
-    })
-  }
+    // this.setState({
+    //   isImportant: !this.state.isImportant
+    // })
+    this.setState((state) => {
+      return {
+        isImportant: !state.isImportant
+      };
+    });
+  };
 
   render() {
     const {value} = this.props;
