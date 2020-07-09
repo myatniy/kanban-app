@@ -9,9 +9,9 @@ export default class TodoListItem extends Component {
   };
 
   onListItemValueClick = () => {
-    this.setState(state => {
+    this.setState(({isCrossedOut}) => {
       return {
-        isCrossedOut: !state.isCrossedOut
+        isCrossedOut: !isCrossedOut
       };
     });
   };
@@ -20,15 +20,15 @@ export default class TodoListItem extends Component {
     // this.setState({
     //   isImportant: !this.state.isImportant
     // })
-    this.setState((state) => {
+    this.setState(({isImportant}) => {
       return {
-        isImportant: !state.isImportant
+        isImportant: !isImportant
       };
     });
   };
 
   render() {
-    const {value} = this.props;
+    const {value, onDeleted} = this.props;
     const {isCrossedOut, isImportant} = this.state;
 
     let listItemValueClassName = isCrossedOut ? ["li-value", "crossed-out"] : ["li-value"];
@@ -44,29 +44,10 @@ export default class TodoListItem extends Component {
           {value}
         </span>
         <div className="btn-container">
-          <button>Del</button>
+          <button onClick={onDeleted}>Del</button>
           <button className="btn-important" onClick={this.onImportantButtonClick}>!</button>
         </div>
       </li>
     );
   }
 }
-
-// const TodoListItem = ({value, isImportant}) => {
-//   const applyIsImportant = (isImportant) => isImportant ? "important" : null;
-
-//   return (
-//     <li 
-//       // key={id}
-//       className={`li-style ${applyIsImportant(isImportant)}`}
-//     >
-//       <span className="li-value">{value}</span>
-//       <div className="btn-container">
-//         <button>Del</button>
-//         <button>!</button>
-//       </div>
-//     </li>
-//   );
-// }
-
-// export default TodoListItem;

@@ -2,14 +2,12 @@ import React from "react";
 import "./todo-list.css";
 import TodoListItem from "./todo-list-item";
 
-const TodoList = ({todoData}) => {
-  const todoDataElements = todoData.map((item) => 
-    // <TodoListItem value={item.value} isImportant={item.isImportant} />
-    // <TodoListItem key={item.id} {...item} />
+const TodoList = ({todoData, onDeleted}) => {
+  const todoDataElements = todoData.map(({id, value}) =>
     <TodoListItem 
-      key={item.id} 
-      value={item.value} 
-      isImportant={item.isImportant} 
+      key={id} 
+      value={value}
+      onDeleted={() => onDeleted(id)}
     />
   );
 

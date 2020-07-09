@@ -17,7 +17,10 @@ const TodoApp = () => {
         <input placeholder="search" />
         <ItemStatusFilter />
       </div>
-      <TodoList todoData={todoData} />
+      <TodoList 
+        todoData={todoData} 
+        onDeleted={(id) => console.log(`on deleted, id: ${id}`)}
+      />
     </div>
   );
 }
