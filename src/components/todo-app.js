@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./todo-app.css";
 import TodoList from "./todo-list";
 import ItemStatusFilter from "./item-status-filter";
+import TodoListItemAddForm from "./todo-list-item-add-form";
 import {uuid} from "uuidv4";
 
 export default class TodoApp extends Component {
@@ -24,7 +25,15 @@ export default class TodoApp extends Component {
         todoData: todoDataWithoutDeletedElement
       };
     });
-  };
+  }
+
+  addTodoListItem = () => {
+    this.setState(({todoData}) => {
+      return {
+        todoData: todoData.concat({id: uuid(), value: "Added"})
+      };
+    });
+  }
 
   render() {
     return (
@@ -34,7 +43,10 @@ export default class TodoApp extends Component {
           <input placeholder="search" />
           <ItemStatusFilter />
         </div>
-        <TodoList 
+        <TodoListItemAddForm
+          onAdded={this.addTodoListItem}
+        />
+        <TodoList
           todoData={this.state.todoData} 
           onDeleted={this.deleteTodoListItem}
         />

@@ -14,7 +14,7 @@ export default class TodoListItem extends Component {
         isCrossedOut: !isCrossedOut
       };
     });
-  };
+  }
 
   onImportantButtonClick = () => {
     // this.setState({
@@ -25,7 +25,7 @@ export default class TodoListItem extends Component {
         isImportant: !isImportant
       };
     });
-  };
+  }
 
   render() {
     const {value, onDeleted} = this.props;
