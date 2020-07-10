@@ -1,28 +1,44 @@
-import React from "react";
+import React, { Component } from "react";
 import "./todo-app.css";
 import TodoList from "./todo-list";
 import ItemStatusFilter from "./item-status-filter";
 import {uuid} from "uuidv4";
 
-const TodoApp = () => {
-  const todoData = [
-    {id: uuid(), value: "Build"},
-    {id: uuid(), value: "App"}
-  ]
+export default class TodoApp extends Component {
+  state = {
+    todoData: [
+      {id: uuid(), value: "Build"},
+      {id: uuid(), value: "App"}
+    ]
+  };
 
-  return (
-    <div className="flex-container">
-      <h1>Todo</h1>
-      <div className="filter-notes-container">
-        <input placeholder="search" />
-        <ItemStatusFilter />
+  deleteTodoListItem = (id) => {
+    this.setState(({todoData}) => {
+      const todoDataIndexOfArr = todoData.findIndex((el) => el.id === id);
+      const todoDataWithoutDeletedElement = [
+        ...todoData.slice(0, todoDataIndexOfArr),
+        ...todoData.slice(todoDataIndexOfArr + 1)
+      ];
+
+      return {
+        todoData: todoDataWithoutDeletedElement
+      };
+    });
+  };
+
+  render() {
+    return (
+      <div className="flex-container">
+        <h1>Todo</h1>
+        <div className="filter-notes-container">
+          <input placeholder="search" />
+          <ItemStatusFilter />
+        </div>
+        <TodoList 
+          todoData={this.state.todoData} 
+          onDeleted={this.deleteTodoListItem}
+        />
       </div>
-      <TodoList 
-        todoData={todoData} 
-        onDeleted={(id) => console.log(`on deleted, id: ${id}`)}
-      />
-    </div>
-  );
+    );
+  }
 }
-
-export default TodoApp;
