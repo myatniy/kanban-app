@@ -82,6 +82,9 @@ export default class TodoApp extends Component {
   }
 
   render() {
+    const todoQuantity = this.state.todoData.filter((el) => el.done).length;
+    // const doneQuantity = this.state.todoData.filter((el) => el.done).length;
+
     return (
       <div className="flex-container">
         <h1>Todo</h1>
@@ -93,8 +96,8 @@ export default class TodoApp extends Component {
           onAdded={this.addTodoListItem}
         />
         <TodoListStatistics
-          todoQuantity={2}
-          doneQuantity={1}
+          todoQuantity={this.state.todoData.length - todoQuantity}
+          doneQuantity={todoQuantity}
         />
         <TodoList
           todoData={this.state.todoData} 
