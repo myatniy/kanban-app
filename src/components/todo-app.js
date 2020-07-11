@@ -16,7 +16,7 @@ export default class TodoApp extends Component {
     ]
   };
 
-  createTodoListItem = (todoListItemValue) => {
+  addTodoListItem = (todoListItemValue) => {
     this.setState(({todoData}) => {
       return {
         todoData: todoData.concat({
@@ -41,10 +41,6 @@ export default class TodoApp extends Component {
         todoData: todoDataWithoutDeletedElement
       };
     });
-  }
-
-  addTodoListItem = () => {
-    this.createTodoListItem("New")
   }
 
   changeBooleanValue = (booleanValue) => booleanValue ? false : true;
