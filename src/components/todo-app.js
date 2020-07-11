@@ -49,41 +49,36 @@ export default class TodoApp extends Component {
 
   changeBooleanValue = (booleanValue) => booleanValue ? false : true;
 
+  togglePropertyHelper = (arr, idOfArrElement, propOfArr) => {
+    const indexOfArr = arr.findIndex(el => el.id === idOfArrElement);
+    const itemOfArr = arr[indexOfArr];
+
+    return [
+      ...arr.slice(0, indexOfArr),
+      {...itemOfArr, [propOfArr]: !itemOfArr[propOfArr]},
+      ...arr.slice(indexOfArr + 1)
+    ];
+  }
+
   onToggleImportant = (id) => {
     this.setState(({todoData}) => {
-      const todoDataIndexOfArr = todoData.findIndex((el) => el.id === id);
-      const todoDataItem = todoData[todoDataIndexOfArr];
-      todoDataItem.important = !todoDataItem.important;
-
       return {
-        todoData: [
-          ...todoData.slice(0, todoDataIndexOfArr),
-          todoDataItem,
-          ...todoData.slice(todoDataIndexOfArr + 1)
-        ]
+        todoData: this.togglePropertyHelper(todoData, id, "important")
       };
     });
   }
 
   onToggleDone = (id) => {
     this.setState(({todoData}) => {
-      const todoDataIndexOfArr = todoData.findIndex((el) => el.id === id);
-      const todoDataItem = todoData[todoDataIndexOfArr];
-      todoDataItem.done = !todoDataItem.done;
-
       return {
-        todoData: [
-          ...todoData.slice(0, todoDataIndexOfArr),
-          todoDataItem,
-          ...todoData.slice(todoDataIndexOfArr + 1)
-        ]
+        todoData: this.togglePropertyHelper(todoData, id, "done")
       };
     });
   }
 
   render() {
-    const todoQuantity = this.state.todoData.filter((el) => el.done).length;
-    // const doneQuantity = this.state.todoData.filter((el) => el.done).length;
+    const {todoData} = this.state;
+    const doneQuantity = (todoData.filter((el) => el.done)).length;
 
     return (
       <div className="flex-container">
@@ -96,11 +91,11 @@ export default class TodoApp extends Component {
           onAdded={this.addTodoListItem}
         />
         <TodoListStatistics
-          todoQuantity={this.state.todoData.length - todoQuantity}
-          doneQuantity={todoQuantity}
+          todoQuantity={todoData.length - doneQuantity}
+          doneQuantity={doneQuantity}
         />
         <TodoList
-          todoData={this.state.todoData} 
+          todoData={todoData} 
           onDeleted={this.deleteTodoListItem}
           onToggleImportant={this.onToggleImportant}
           onToggleDone={this.onToggleDone}
