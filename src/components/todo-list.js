@@ -1,5 +1,5 @@
 import React from "react";
-import "./todo-list.css";
+import "./css/todo-list.css";
 import TodoListItem from "./todo-list-item";
 
 const TodoList = ({todoData, onDeleted, onToggleImportant, onToggleDone}) => {

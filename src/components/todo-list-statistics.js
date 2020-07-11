@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./todo-list-statistics.css";
+import "./css/todo-list-statistics.css";
 
 export default class TodoListStatistics extends Component {
 

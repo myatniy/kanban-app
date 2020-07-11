@@ -1,5 +1,5 @@
 import React from "react";
-import "./todo-list-item.css";
+import "./css/todo-list-item.css";
 
 const TodoListItem = ({ value, important, done, onDeleted, onToggleImportant, onToggleDone }) => {
   let listItemParentClassName = important ? ["li-style", "important"] : ["li-style"];
