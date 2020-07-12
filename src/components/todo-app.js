@@ -4,6 +4,7 @@ import TodoListStatistics from "./todo-list-statistics";
 import TodoList from "./todo-list";
 import ItemStatusFilter from "./item-status-filter";
 import TodoListItemAddForm from "./todo-list-item-add-form";
+import TodoListSearch from "./todo-list-search";
 import {uuid} from "uuidv4";
 
 export default class TodoApp extends Component {
@@ -13,7 +14,8 @@ export default class TodoApp extends Component {
       {id: uuid(), value: "App", important: false, done: false},
       {id: uuid(), value: "Important", important: true, done: false},
       {id: uuid(), value: "Done", important: false, done: true}
-    ]
+    ],
+    searchQuery: ""
   };
 
   addTodoListItem = (todoListItemValue) => {
@@ -43,8 +45,6 @@ export default class TodoApp extends Component {
     });
   }
 
-  changeBooleanValue = (booleanValue) => booleanValue ? false : true;
-
   togglePropertyHelper = (arr, idOfArrElement, propOfArr) => {
     const indexOfArr = arr.findIndex(el => el.id === idOfArrElement);
     const itemOfArr = arr[indexOfArr];
@@ -72,15 +72,31 @@ export default class TodoApp extends Component {
     });
   }
 
+  search = (arr, searchQuery) => {
+    if (arr.length === 0) return arr;
+
+    return arr.filter(
+      arrItem => arrItem
+        .value
+        .toLowerCase()
+        .indexOf(searchQuery) > -1
+    );
+  }
+
+  onSearchResultChanged = (searchQuery) => {
+    this.setState({searchQuery});
+  }
+
   render() {
-    const {todoData} = this.state;
+    const {todoData, searchQuery} = this.state;
     const doneQuantity = (todoData.filter((el) => el.done)).length;
+    const searchResult = this.search(todoData, searchQuery);
 
     return (
       <div className="flex-container">
         <h1>Todo</h1>
         <div className="filter-notes-container">
-          <input placeholder="search" />
+          <TodoListSearch onSearchResultChanged={this.onSearchResultChanged} />
           <ItemStatusFilter />
         </div>
         <TodoListItemAddForm
@@ -91,7 +107,7 @@ export default class TodoApp extends Component {
           doneQuantity={doneQuantity}
         />
         <TodoList
-          todoData={todoData} 
+          todoData={searchResult}
           onDeleted={this.deleteTodoListItem}
           onToggleImportant={this.onToggleImportant}
           onToggleDone={this.onToggleDone}
