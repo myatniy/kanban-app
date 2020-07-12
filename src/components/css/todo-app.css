@@ -2,12 +2,15 @@ button {
   border: 1px black solid;
   color: black;
   background-color: white;
+  margin-left: 3px;
+  border-radius: 3px;
 }
 
 input {
   width: 100%;
   border: 1px solid black;
-  border-right: 0;
+  border-radius: 3px;
+  padding-left: 6px;
 }
 
 .flex-container {

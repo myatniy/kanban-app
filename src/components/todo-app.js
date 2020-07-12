@@ -16,7 +16,7 @@ export default class TodoApp extends Component {
       {id: uuid(), value: "Done", important: false, done: true}
     ],
     searchQuery: "",
-    filterQuery: "" // all, active, done
+    filterQuery: "all" // all, active, done
   };
 
   addTodoListItem = (todoListItemValue) => {
@@ -90,10 +90,15 @@ export default class TodoApp extends Component {
 
   filter = (arr, filterQuery) => {
     switch (filterQuery) {
+      case "all": return arr;
       case "active": return arr.filter(item => !item.done);
       case "done": return arr.filter(item => item.done);
       default: return arr;
     }
+  }
+
+  onFilterQueryChanged = (filterQuery) => {
+    this.setState({filterQuery})
   }
 
   render() {
@@ -108,7 +113,10 @@ export default class TodoApp extends Component {
         <h1>Todo</h1>
         <div className="filter-notes-container">
           <TodoListSearch onSearchResultChanged={this.onSearchResultChanged} />
-          <TodoListFilter />
+          <TodoListFilter 
+            filterQuery={filterQuery} 
+            onFilterQueryChanged={this.onFilterQueryChanged}
+          />
         </div>
         <TodoListAdd
           onAdded={this.addTodoListItem}

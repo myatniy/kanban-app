@@ -9,19 +9,27 @@ export default class TodoListFilter extends Component {
   ];
 
   render() {
-    const btn = this.buttons.map(({value, label}) => <button type="button" value={value}>{label}</button>);
+    const {filterQuery, onFilterQueryChanged} = this.props;
+    const buttons = this.buttons.map(
+      ({value, label}) => {
+        const isActive = filterQuery === value;
+        const isActiveCSS = isActive ? "btn-active" : null;
+
+        return <button 
+          className={isActiveCSS} 
+          type="button" 
+          value={value} 
+          key={value}
+          onClick={() => onFilterQueryChanged(value)}
+        >
+          {label}
+        </button>;
+      }
+    );
 
     return (
       <div className="btn-group">
-        <button type="button" id="btn-all">
-          All
-        </button>
-        <button type="button" id="btn-active">
-          Active
-        </button>
-        <button type="button" id="btn-done">
-          Done
-        </button>
+        {buttons}
       </div>
     );
   }
