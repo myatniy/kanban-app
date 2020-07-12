@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import "./css/item-status-filter.css";
+import "./css/todo-list-filter.css";
 
 export default class TodoListFilter extends Component {
 
@@ -16,6 +16,6 @@ export default class TodoListFilter extends Component {
           Done
         </button>
       </div>
-    )
+    );
   }
 }

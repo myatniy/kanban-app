@@ -80,7 +80,7 @@ export default class TodoApp extends Component {
       arrItem => arrItem
         .value
         .toLowerCase()
-        .indexOf(searchQuery) > -1
+        .indexOf(searchQuery.toLowerCase()) > -1
     );
   }
 
