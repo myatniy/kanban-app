@@ -16,7 +16,7 @@ const TodoList = ({todoData, onDeleted, onToggleImportant, onToggleDone}) => {
   );
 
   return (
-    <ul>
+    <ul className="todo-list-container">
       {todoDataElements}
     </ul>
   );

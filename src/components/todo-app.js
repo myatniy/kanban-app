@@ -15,7 +15,8 @@ export default class TodoApp extends Component {
       {id: uuid(), value: "Important", important: true, done: false},
       {id: uuid(), value: "Done", important: false, done: true}
     ],
-    searchQuery: ""
+    searchQuery: "",
+    filterQuery: "" // all, active, done
   };
 
   addTodoListItem = (todoListItemValue) => {
@@ -87,10 +88,20 @@ export default class TodoApp extends Component {
     this.setState({searchQuery});
   }
 
+  filter = (arr, filterQuery) => {
+    switch (filterQuery) {
+      case "active": return arr.filter(item => !item.done);
+      case "done": return arr.filter(item => item.done);
+      default: return arr;
+    }
+  }
+
   render() {
-    const {todoData, searchQuery} = this.state;
+    const {todoData, searchQuery, filterQuery} = this.state;
     const doneQuantity = (todoData.filter((el) => el.done)).length;
-    const searchResult = this.search(todoData, searchQuery);
+    const searchResult = this.filter(
+      this.search(todoData, searchQuery), filterQuery
+    );
 
     return (
       <div className="flex-container">

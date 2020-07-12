@@ -7,7 +7,10 @@ export default class TodoListStatistics extends Component {
     const {todoQuantity, doneQuantity} = this.props;
 
     return(
-      <p className="statistics">{todoQuantity} more to do, {doneQuantity} done</p>
+      <div className="statistics-container">
+        <span className="digit">{todoQuantity} active</span>
+        <span className="digit">{doneQuantity} completed</span>
+      </div>
     );
   }
 }

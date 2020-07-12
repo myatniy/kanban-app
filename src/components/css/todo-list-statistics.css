@@ -1,4 +1,11 @@
-.statistics {
-  float: right;
-  margin: 10px 16px 0;
+.statistics-container {
+  margin: 6px 0 -10px;
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+
+.digit::first-letter {
+  font-weight: bold;
 }

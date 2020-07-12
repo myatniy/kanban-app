@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./css/todo-list-item-add-form.css";
 
 export default class TodoListItemAddForm extends Component {
   state = {
@@ -13,7 +14,7 @@ export default class TodoListItemAddForm extends Component {
 
   onTextSubmitted = (e) => {
     e.preventDefault();
-    this.props.onAdded(this.state.todoListItemValue);
+    if (this.state.todoListItemValue) this.props.onAdded(this.state.todoListItemValue);
     this.setState({
       todoListItemValue: ""
     });
@@ -21,7 +22,10 @@ export default class TodoListItemAddForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.onTextSubmitted}>
+      <form
+        className="add-item-container"
+        onSubmit={this.onTextSubmitted}
+      >
         <input
           type="text"
           placeholder="new note"

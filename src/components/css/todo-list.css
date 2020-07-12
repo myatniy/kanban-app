@@ -1,9 +1,10 @@
-ul {
+.todo-list-container {
   list-style-type: none;
   width: 100%;
-  margin: 10px 0;
   padding: 0;
+  margin: 0;
   display: flex;
   flex-flow: column nowrap;
   align-items: stretch;
+  border-top: 2px solid black;
 }

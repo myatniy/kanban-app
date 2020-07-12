@@ -14,8 +14,8 @@ const TodoListItem = ({ value, important, done, onDeleted, onToggleImportant, on
         {value}
       </span>
       <div className="btn-container">
-        <button onClick={onDeleted}>Del</button>
-        <button className="btn-important" onClick={onToggleImportant}>!</button>
+        <button className={`btn-todo-list-item`} onClick={onDeleted}>x</button>
+        <button className={`btn-todo-list-item btn-important`} onClick={onToggleImportant}>!</button>
       </div>
     </li>
   );
