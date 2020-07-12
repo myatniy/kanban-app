@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/reactTodoApplication/static/css/main.c4a00961.chunk.css",
+    "main.js": "/reactTodoApplication/static/js/main.ea282694.chunk.js",
+    "main.js.map": "/reactTodoApplication/static/js/main.ea282694.chunk.js.map",
+    "runtime-main.js": "/reactTodoApplication/static/js/runtime-main.e678330f.js",
+    "runtime-main.js.map": "/reactTodoApplication/static/js/runtime-main.e678330f.js.map",
+    "static/js/2.177fb567.chunk.js": "/reactTodoApplication/static/js/2.177fb567.chunk.js",
+    "static/js/2.177fb567.chunk.js.map": "/reactTodoApplication/static/js/2.177fb567.chunk.js.map",
+    "index.html": "/reactTodoApplication/index.html",
+    "precache-manifest.8da011c8dc209f62bbc84ee77f336d78.js": "/reactTodoApplication/precache-manifest.8da011c8dc209f62bbc84ee77f336d78.js",
+    "service-worker.js": "/reactTodoApplication/service-worker.js",
+    "static/css/main.c4a00961.chunk.css.map": "/reactTodoApplication/static/css/main.c4a00961.chunk.css.map",
+    "static/js/2.177fb567.chunk.js.LICENSE.txt": "/reactTodoApplication/static/js/2.177fb567.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/reactTodoApplication/static/media/Roboto-Regular.11eabca2.ttf"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e678330f.js",
+    "static/js/2.177fb567.chunk.js",
+    "static/css/main.c4a00961.chunk.css",
+    "static/js/main.ea282694.chunk.js"
+  ]
+}
