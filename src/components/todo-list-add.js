@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./css/todo-list-item-add-form.css";
 
-export default class TodoListItemAddForm extends Component {
+export default class TodoListAdd extends Component {
   state = {
     todoListItemValue: ""
   }

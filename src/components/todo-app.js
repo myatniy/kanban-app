@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import "./css/todo-app.css";
 import TodoListStatistics from "./todo-list-statistics";
 import TodoList from "./todo-list";
-import ItemStatusFilter from "./item-status-filter";
-import TodoListItemAddForm from "./todo-list-item-add-form";
+import TodoListFilter from "./todo-list-filter";
+import TodoListAdd from "./todo-list-add";
 import TodoListSearch from "./todo-list-search";
 import {uuid} from "uuidv4";
 
@@ -108,9 +108,9 @@ export default class TodoApp extends Component {
         <h1>Todo</h1>
         <div className="filter-notes-container">
           <TodoListSearch onSearchResultChanged={this.onSearchResultChanged} />
-          <ItemStatusFilter />
+          <TodoListFilter />
         </div>
-        <TodoListItemAddForm
+        <TodoListAdd
           onAdded={this.addTodoListItem}
         />
         <TodoListStatistics
