@@ -10,7 +10,7 @@ input {
   width: 100%;
   border: 1px solid black;
   border-radius: 3px;
-  padding-left: 6px;
+  padding: 4px 6px;
 }
 
 .flex-container {
@@ -19,7 +19,8 @@ input {
   align-items: center;
   padding: 10px;
   margin: 0 auto;
-  width: 460px;
+  min-width: 300px;
+  max-width: 460px;
   border: 2px black solid;
   box-shadow: 4px 4px darkgray;
 }
