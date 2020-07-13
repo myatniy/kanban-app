@@ -16,18 +16,35 @@ export default class TodoApp extends Component {
       {id: uuid(), value: "Done", important: false, done: true}
     ],
     searchQuery: "",
-    filterQuery: "all" // all, active, done
+    filterQuery: "all"
   };
+
+  componentDidMount() {
+    console.log(localStorage);
+    if (localStorage.getItem("todoData")) {
+      this.setState({
+        todoData: JSON.parse(localStorage.getItem("todoData"))
+      });
+    }
+  }
+
+  componentDidUpdate(prevState) {
+    if (this.state.todoData !== prevState.todoData) {
+      localStorage.setItem("todoData", JSON.stringify(this.state.todoData));
+    }
+  }
 
   addTodoListItem = (todoListItemValue) => {
     this.setState(({todoData}) => {
+      const newTodoData = todoData.concat({
+        id: uuid(),
+        value: todoListItemValue,
+        important: false,
+        done: false
+      });
+
       return {
-        todoData: todoData.concat({
-          id: uuid(),
-          value: todoListItemValue,
-          important: false,
-          done: false
-        })
+        todoData: newTodoData
       };
     });
   }
@@ -90,7 +107,6 @@ export default class TodoApp extends Component {
 
   filter = (arr, filterQuery) => {
     switch (filterQuery) {
-      case "all": return arr;
       case "active": return arr.filter(item => !item.done);
       case "done": return arr.filter(item => item.done);
       default: return arr;
@@ -98,7 +114,7 @@ export default class TodoApp extends Component {
   }
 
   onFilterQueryChanged = (filterQuery) => {
-    this.setState({filterQuery})
+    this.setState({filterQuery});
   }
 
   render() {
